@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Downloader</title>
+    <script src="{{ url_for('static', filename='js/anti-inspect.js') }}"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
@@ -27,6 +28,25 @@
 <body class="bg-dark text-white">
 
 <div class="container mt-5">
+
+    <div class="warning-banner">
+    ⚠️ Notice: This website must not be used for unethical purposes. 
+    Downloading copyrighted or inappropriate content is strictly prohibited. 
+    Violations may result in strong action against offenders.
+</div>
+
+<style>
+.warning-banner {
+    background-color: #d32f2f;   /* Red background */
+    color: #ffffff;              /* White text */
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+</style>
     <h1 class="text-center mb-4">Video Downloader</h1>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -48,6 +68,7 @@
         <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="audio" name="audio">
             <label class="form-check-label" for="audio">Download as Audio (MP3)</label>
+            <bold style="color: rgb(255, 0, 0);">* Currently this feature is not available.</bold>
         </div>
 
         <div class="mb-3">
@@ -65,12 +86,16 @@
         <button type="submit" class="btn btn-primary btn-lg w-100 mt-3">
             📥 Download
         </button>
+
+        
+        
     </form>
 </div>
 
 <!-- Footer -->
-<footer class="site-footer">
-    © Ansuman Sahoo 2026.
+<footer bg class="site-footer" style="color: rgb(0, 153, 255);">
+    <strong>©2026 Video Downloader | Powered by Emtek CoE  | Built by Ansuman Sahoo</strong>
+
 </footer>
 
 </body>
