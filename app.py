@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, send_from_directory
+from flask import Flask, Response, render_template, request, redirect, url_for, flash, send_from_directory
 import yt_dlp
 import os
 
@@ -45,6 +45,18 @@ def index():
 @app.route('/download/<filename>')
 def download_file(filename):
     return send_from_directory(DOWNLOAD_FOLDER, filename, as_attachment=True)
+
+@app.route('/sitemap.xml')
+def sitemap():
+    xml = '''<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        <url>
+            <loc>https://video-web-downloader.onrender.com/</loc>
+            <changefreq>daily</changefreq>
+            <priority>1.0</priority>
+        </url>
+    </urlset>'''
+    return Response(xml, mimetype='application/xml')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
